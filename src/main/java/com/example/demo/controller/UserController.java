@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -38,15 +39,15 @@ public class UserController {
 		return new ResponseEntity<>(userService.save(user),HttpStatus.CREATED);
 	}
 	
-	@PostMapping("/update")
-	public ResponseEntity update(@RequestBody User user){
-		if(userService.update(user)) {
+	@GetMapping("/update/{id}")
+	public ResponseEntity update(@PathVariable("id")int id){
+		if(userService.update(id)) {
 			return new ResponseEntity<>(HttpStatus.OK);
 		}
 		return new ResponseEntity<>(HttpStatus.NOT_FOUND);	
 	}
 	
-	@GetMapping("/delete/{id}")
+	@DeleteMapping("/delete/{id}")
 	public ResponseEntity delete(@PathVariable("id")int id) {
 		try {
 			userService.delete(id);
@@ -54,6 +55,11 @@ public class UserController {
 		}catch (Error e) {
 			return new ResponseEntity(HttpStatus.NOT_FOUND);// TODO: handle exception
 		}
+	}
+	
+	@PostMapping("/update")
+	public ResponseEntity update1(@RequestBody User user){
+		return new ResponseEntity<>(userService.save(user),HttpStatus.CREATED);	
 	}
 
 }

@@ -15,8 +15,8 @@ function obtenerDatos(){
                 <td>${dato.name}</td>
                 <td>${dato.lastName}</td>
                 <td>${dato.process}</td>
-                <td><button value=${dato.restaurantId}; onClick="actualizar(this)">Modificar</button></td>
-                <td><button value=${dato.restaurantId} onclick="eliminar('${dato.restaurantId}')">Eliminar</button></td>
+                <td><button value=${dato.id} onClick="actualizar(this)">Modificar</button></td>
+                <td><button value=${dato.id} onclick="eliminar('${dato.id}')">Eliminar</button></td>
             </tr>
             `
       }
@@ -27,13 +27,15 @@ function obtenerDatos(){
 
 
 function redireccionarUpdate(){
-    location.href='http://localhost:8090/restaurante/apiv1/usuario/actualizarRestaurante';
+    location.href='http://localhost:8080/view/update';
 }
 function actualizar(comp){
-    let id=comp.value;
-    console.log(id);
-    localStorage.setItem("ID1",id);
-    redireccionarUpdate();
+	let id=comp.value;
+	var url='http://localhost:8080/user/update/'+id;
+    fetch(url)
+      .then(response => response.json())
+      .then(location.href='http://localhost:8080/view/update');
+      
 
 }
 function eliminar(comp){
@@ -42,11 +44,11 @@ function eliminar(comp){
       method: 'DELETE',
       redirect: 'follow'
     };
-    let url='http://localhost:8090/restaurante/apiv1/restaurant/delete/'+comp
+    let url='http://localhost:8080/user/delete/'+comp;
     fetch(url, requestOptions)
       .then(response => response.text())
       .then(result => console.log(result))
-    location.href='http://localhost:8090/restaurante/apiv1/usuario/restaurant-list';
+    location.href='http://localhost:8080/view/update';
 
 }
 

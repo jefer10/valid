@@ -28,9 +28,12 @@ public class UserService {
 		return userRepository.save(user);
 	}
 	
-	public Boolean update(User user) {
+	public Boolean update(int id) {
 		try {
-			userRepository.update(user);
+			Optional<User> user=userRepository.user(id);
+			user.get().setProcess(!user.get().getProcess());
+			userRepository.update(user.get()); 
+			System.out.println(user.get().getProcess());
 			return true; 
 		}catch (Error e) {
 			return false;// TODO: handle exception
