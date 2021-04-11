@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>valid</title>
+    <Link href="../CSS/Styles.css" type="text/css"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+
+<body onload="obtenerDatos()">
+    <div class="tabla-contenedor">
+        <h1>Lista de Usuarios</h1>
+    </div>
+    
+    <div class="container">
+        <div class="section">
+
+            <table id="table" class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col" >ID</th>
+                        <th scope="col">nombres</th>
+                        <th scope="col">apellido</th>
+                        <th scope="col">proceso</th>
+                        <th scope="col">actualizar</th>
+                        <th scope="col">borrar</th>
+                        
+                    </tr>
+                </thead>
+
+                <tbody id="dato"> </tbody>
+            </table>
+
+        </div>
+    </div>
+   <script src="/js/enlaze.js"></script>
+</body>
+</html>
