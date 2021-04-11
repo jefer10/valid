@@ -59,7 +59,7 @@ public class UserController {
 	
 	@PostMapping("/update")
 	public ResponseEntity update1(@RequestBody User user){
-		return new ResponseEntity<>(userService.save(user),HttpStatus.CREATED);	
+		return new ResponseEntity<>(userService.update1(user),HttpStatus.CREATED);	
 	}
 
 }
