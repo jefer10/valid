@@ -1,4 +1,4 @@
-# Diseño:
+# Diseño
 
 Una arquictetectura simple de un solo modelo, donde el id se genera automaticamente.
 
